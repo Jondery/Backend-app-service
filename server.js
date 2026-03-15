@@ -8,5 +8,10 @@ app.get('/api/data', (req, res) => {
   res.json({ message: 'Hello from backend!' });
 });
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT;
+if (!port) {
+    console.error("PORT not defined. Exiting...");
+    process.exit(1);
+}
+
 app.listen(port, () => console.log(`Backend running on port ${port}`));
